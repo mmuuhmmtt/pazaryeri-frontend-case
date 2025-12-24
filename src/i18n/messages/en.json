@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "home": {
+      "title": "Marketplace - Best Products",
+      "description": "Find the highest quality products at the best prices",
+      "ogTitle": "Marketplace",
+      "ogDescription": "Discover the highest quality products"
+    },
+    "products": {
+      "title": "Products - Marketplace",
+      "description": "Browse all our products"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "favorites": "Favorites"
+  },
+  "home": {
+    "hero": {
+      "title": "Discover the Best Products",
+      "subtitle": "Quality products, affordable prices, and fast shipping"
+    },
+    "featured": {
+      "title": "Featured Products",
+      "subtitle": "Browse our featured products"
+    },
+    "allProducts": {
+      "title": "All Products"
+    }
+  },
+  "products": {
+    "title": "All Products",
+    "subtitle": "{count} products listed",
+    "notFound": "No products found"
+  },
+  "favorites": {
+    "title": "Favorites",
+    "subtitle": "{count} items in favorites",
+    "empty": {
+      "title": "No favorite products",
+      "description": "Add products you like to favorites"
+    }
+  },
+  "product": {
+    "reviews": "reviews",
+    "description": "Description",
+    "specifications": "Specifications",
+    "addToCart": "Add to Cart",
+    "in-stock": "In Stock",
+    "out-of-stock": "Out of Stock",
+    "low-stock": "Low Stock",
+    "stock": {
+      "low": "Low Stock"
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for does not exist or may have been moved.",
+    "goHome": "Go Home",
+    "browseProducts": "Browse Products"
+  },
+  "error": {
+    "title": "Something Went Wrong",
+    "description": "Sorry, something went wrong. Please try again.",
+    "tryAgain": "Try Again"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred"
+  }
+}

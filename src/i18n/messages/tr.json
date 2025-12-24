@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "home": {
+      "title": "Pazaryeri - En İyi Ürünler",
+      "description": "En kaliteli ürünleri en uygun fiyatlarla bulun",
+      "ogTitle": "Pazaryeri",
+      "ogDescription": "En kaliteli ürünleri keşfedin"
+    },
+    "products": {
+      "title": "Ürünler - Pazaryeri",
+      "description": "Tüm ürünlerimizi inceleyin"
+    }
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "products": "Ürünler",
+    "favorites": "Favoriler"
+  },
+  "home": {
+    "hero": {
+      "title": "En İyi Ürünleri Keşfedin",
+      "subtitle": "Kaliteli ürünler, uygun fiyatlar ve hızlı kargo"
+    },
+    "featured": {
+      "title": "Öne Çıkan Ürünler",
+      "subtitle": "Öne çıkan ürünlerimizi inceleyin"
+    },
+    "allProducts": {
+      "title": "Tüm Ürünler"
+    }
+  },
+  "products": {
+    "title": "Tüm Ürünler",
+    "subtitle": "{count} ürün listeleniyor",
+    "notFound": "Ürün bulunamadı"
+  },
+  "favorites": {
+    "title": "Favoriler",
+    "subtitle": "{count} ürün favorilerinizde",
+    "empty": {
+      "title": "Favori ürününüz yok",
+      "description": "Beğendiğiniz ürünleri favorilere ekleyin"
+    }
+  },
+  "product": {
+    "reviews": "yorum",
+    "description": "Açıklama",
+    "specifications": "Özellikler",
+    "addToCart": "Sepete Ekle",
+    "in-stock": "Stokta Var",
+    "out-of-stock": "Stokta Yok",
+    "low-stock": "Az Stok",
+    "stock": {
+      "low": "Son Ürünler"
+    }
+  },
+  "notFound": {
+    "title": "Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
+    "goHome": "Ana Sayfaya Dön",
+    "browseProducts": "Ürünlere Göz At"
+  },
+  "error": {
+    "title": "Bir Hata Oluştu",
+    "description": "Üzgünüz, bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
+    "tryAgain": "Tekrar Dene"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu"
+  }
+}
