@@ -132,6 +132,7 @@ npm run storybook    # Storybook'u başlat
 
 Bu proje bir teknik değerlendirme case'i için geliştirilmiştir.
 Muhammet Coşgun 
-```
+
+**Live Demo:** https://pazaryeri-frontend-case.vercel.app
 
 
