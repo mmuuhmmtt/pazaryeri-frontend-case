@@ -21,7 +21,15 @@ export default async function LocaleLayout({
         notFound();
     }
 
-    const messages = await getMessages();
+    // Static export için messages'ı direkt import et
+    // getMessages() static export'ta çalışmayabilir
+    let messages;
+    try {
+        messages = await getMessages();
+    } catch (error) {
+        // Fallback: direkt import
+        messages = (await import(`@/i18n/messages/${locale}.json`)).default;
+    }
 
     return (
         <NextIntlClientProvider messages={messages}>
