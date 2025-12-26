@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Filter, X } from 'lucide-react';
-import { Button } from '@/components/atoms/Button/Button';
-import { Badge } from '@/components/atoms/Badge/Badge';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import type { FilterOptions, SortOption } from '@/types';
 import { mockCategories } from '@/mock-data/products';
 import { mockBrands } from '@/mock-data/products';
@@ -218,5 +218,3 @@ export function ProductFilters({
         </div>
     );
 }
-
-

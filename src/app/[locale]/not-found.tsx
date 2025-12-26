@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { Button } from '@/components/atoms/Button/Button';
+import { Button } from '@/components/ui/button';
 import { Home, Search } from 'lucide-react';
 
 export default function NotFound() {

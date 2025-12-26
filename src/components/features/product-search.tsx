@@ -63,5 +63,3 @@ export function ProductSearch({ onSearch, locale }: ProductSearchProps) {
         </div>
     );
 }
-
-

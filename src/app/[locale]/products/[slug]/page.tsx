@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { Header } from '@/components/organisms/Header/Header';
-import { Button } from '@/components/atoms/Button/Button';
-import { Badge } from '@/components/atoms/Badge/Badge';
+import { Header } from '@/components/features/header';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { mockProducts } from '@/mock-data/products';
 import { formatPrice } from '@/lib/utils';
 import { Star, ShoppingCart, Heart } from 'lucide-react';
@@ -39,14 +39,14 @@ export async function generateMetadata({
         openGraph: {
             title: `${product.name} | Pazaryeri (${locale.toUpperCase()})`,
             description: product.shortDescription || product.description,
-            images: [product.images[0].url],
+            images: product.images[0] ? [product.images[0].url] : [],
             type: 'website',
         },
         twitter: {
             card: 'summary_large_image',
             title: `${product.name} | Pazaryeri (${locale.toUpperCase()})`,
             description: product.shortDescription || product.description,
-            images: [product.images[0].url],
+            images: product.images[0] ? [product.images[0].url] : [],
         },
     };
 }
@@ -82,13 +82,15 @@ export default async function ProductDetailPage({
                         {/* Images */}
                         <div className="space-y-4">
                             <div className="relative aspect-square overflow-hidden rounded-lg bg-secondary-100 dark:bg-secondary-800">
-                                <Image
-                                    src={product.images[0].url}
-                                    alt={product.images[0].alt}
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
+                                {product.images[0] && (
+                                    <Image
+                                        src={product.images[0].url}
+                                        alt={product.images[0].alt}
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                    />
+                                )}
                                 {discountPercentage && (
                                     <Badge
                                         variant="danger"

@@ -3,7 +3,7 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
 import type { Product } from '@/types';
-import { ProductCard } from '@/components/molecules/ProductCard/ProductCard';
+import { ProductCard } from '@/components/features/product-card';
 
 export interface ProductGridProps {
     products: Product[];

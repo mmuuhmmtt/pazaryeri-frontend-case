@@ -2,11 +2,11 @@
 
 import { useState, useMemo, use } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { Header } from '@/components/organisms/Header/Header';
-import { ProductGrid } from '@/components/organisms/ProductGrid/ProductGrid';
-import { ProductFilters } from '@/components/molecules/ProductFilters/ProductFilters';
-import { ProductSearch } from '@/components/molecules/ProductSearch/ProductSearch';
-import { Pagination } from '@/components/molecules/Pagination/Pagination';
+import { Header } from '@/components/features/header';
+import { ProductGrid } from '@/components/features/product-grid';
+import { ProductFilters } from '@/components/features/product-filters';
+import { ProductSearch } from '@/components/features/product-search';
+import { Pagination } from '@/components/features/pagination';
 import { mockProducts } from '@/mock-data/products';
 import { filterProducts, sortProducts, searchProducts, paginateProducts } from '@/lib/utils';
 import type { FilterOptions, SortOption } from '@/types';
@@ -17,18 +17,26 @@ export default function ProductsPage({ params }: { params: Promise<{ locale: str
     const router = useRouter();
 
     const [filters, setFilters] = useState<FilterOptions>(() => {
-        const categories = searchParams.get('categories')?.split(',') || [];
-        const brands = searchParams.get('brands')?.split(',') || [];
+        const categories = searchParams.get('categories')?.split(',').filter(Boolean) || [];
+        const brands = searchParams.get('brands')?.split(',').filter(Boolean) || [];
         const minPrice = searchParams.get('minPrice');
         const maxPrice = searchParams.get('maxPrice');
-        return {
-            categories: categories.length > 0 ? categories : undefined,
-            brands: brands.length > 0 ? brands : undefined,
-            priceRange:
-                minPrice && maxPrice
-                    ? { min: Number(minPrice), max: Number(maxPrice) }
-                    : undefined,
-        };
+        
+        const initialFilters: FilterOptions = {};
+        
+        if (categories.length > 0) {
+            initialFilters.categories = categories;
+        }
+        
+        if (brands.length > 0) {
+            initialFilters.brands = brands;
+        }
+        
+        if (minPrice && maxPrice) {
+            initialFilters.priceRange = { min: Number(minPrice), max: Number(maxPrice) };
+        }
+        
+        return initialFilters;
     });
 
     const [sortOption, setSortOption] = useState<SortOption>(

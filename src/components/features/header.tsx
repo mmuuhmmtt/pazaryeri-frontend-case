@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Heart, ShoppingCart, Moon, Sun } from 'lucide-react';
-import { Button } from '@/components/atoms/Button/Button';
+import { Button } from '@/components/ui/button';
 import { useFavoritesStore } from '@/store/useFavoritesStore';
 import { useUIStore } from '@/store/useUIStore';
 import { useState, useEffect } from 'react';

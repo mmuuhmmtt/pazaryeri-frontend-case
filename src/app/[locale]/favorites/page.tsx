@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Header } from '@/components/organisms/Header/Header';
-import { ProductGrid } from '@/components/organisms/ProductGrid/ProductGrid';
+import { Header } from '@/components/features/header';
+import { ProductGrid } from '@/components/features/product-grid';
 import { useFavoritesStore } from '@/store/useFavoritesStore';
 import { Heart } from 'lucide-react';
 import { useParams } from 'next/navigation';

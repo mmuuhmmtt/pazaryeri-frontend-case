@@ -181,3 +181,102 @@ export interface BreadcrumbItem {
     href: string;
     isCurrentPage?: boolean;
 }
+
+// Seller/Vendor (Meshur.co gibi marketplace için)
+export interface Seller {
+    id: string;
+    name: string;
+    slug: string;
+    logo?: Image;
+    rating: {
+        average: number;
+        count: number;
+    };
+    verified: boolean;
+    joinedDate: string;
+}
+
+// Shipping (Kargo bilgileri)
+export interface ShippingOption {
+    id: string;
+    name: string;
+    price: Price;
+    estimatedDays: {
+        min: number;
+        max: number;
+    };
+    isFree: boolean;
+}
+
+// Cart (Sepet)
+export interface CartItem {
+    id: string;
+    product: Product;
+    quantity: number;
+    selectedVariant?: ProductVariant;
+    addedAt: string;
+}
+
+export interface Cart {
+    items: CartItem[];
+    subtotal: Price;
+    shipping: Price;
+    tax: Price;
+    total: Price;
+    discount?: Price;
+}
+
+// Order (Sipariş)
+export interface Order {
+    id: string;
+    orderNumber: string;
+    userId: string;
+    items: CartItem[];
+    status: 'pending' | 'confirmed' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+    payment: {
+        method: string;
+        status: 'pending' | 'completed' | 'failed';
+        amount: Price;
+    };
+    shipping: {
+        address: Address;
+        option: ShippingOption;
+        trackingNumber?: string;
+    };
+    createdAt: string;
+    updatedAt: string;
+}
+
+// Address (Adres)
+export interface Address {
+    id: string;
+    title: string;
+    fullName: string;
+    phone: string;
+    city: string;
+    district: string;
+    address: string;
+    zipCode?: string;
+    isDefault: boolean;
+}
+
+// User (Kullanıcı)
+export interface User {
+    id: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    phone?: string;
+    avatar?: Image;
+    addresses: Address[];
+    createdAt: string;
+}
+
+// Wishlist (İstek Listesi / Favoriler)
+export interface Wishlist {
+    id: string;
+    userId: string;
+    products: Product[];
+    createdAt: string;
+    updatedAt: string;
+}

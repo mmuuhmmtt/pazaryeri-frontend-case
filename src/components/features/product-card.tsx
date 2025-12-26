@@ -7,8 +7,8 @@ import { motion } from 'framer-motion';
 import { Heart, Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import type { Product } from '@/types';
-import { Button } from '@/components/atoms/Button/Button';
-import { Badge } from '@/components/atoms/Badge/Badge';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { useFavoritesStore } from '@/store/useFavoritesStore';
 import { cn, formatPrice, calculateDiscountPercentage } from '@/lib/utils';
 
@@ -65,14 +65,16 @@ export const ProductCard = memo(function ProductCard({
             >
                 {/* Image Container */}
                 <div className="relative aspect-square overflow-hidden bg-secondary-100 dark:bg-secondary-700">
-                    <Image
-                        src={product.images[0].url}
-                        alt={product.images[0].alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        priority={priority}
-                    />
+                    {product.images[0] && (
+                        <Image
+                            src={product.images[0].url}
+                            alt={product.images[0].alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            priority={priority}
+                        />
+                    )}
 
                     {/* Badges */}
                     <div className="absolute left-2 top-2 flex flex-col gap-1">

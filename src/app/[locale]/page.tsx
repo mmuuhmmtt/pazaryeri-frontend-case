@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { getTranslations } from 'next-intl/server';
-import { Header } from '@/components/organisms/Header/Header';
+import { Header } from '@/components/features/header';
 import { mockProducts } from '@/mock-data/products';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 // Lazy load ProductGrid for better code splitting
 const ProductGrid = dynamic(
-    () => import('@/components/organisms/ProductGrid/ProductGrid').then((mod) => ({ default: mod.ProductGrid })),
+    () => import('@/components/features/product-grid').then((mod) => ({ default: mod.ProductGrid })),
     {
         loading: () => (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

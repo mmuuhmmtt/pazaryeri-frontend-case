@@ -10,7 +10,7 @@ describe('useFavoritesStore', () => {
 
     it('should add product to favorites', () => {
         const { result } = renderHook(() => useFavoritesStore());
-        const product = mockProducts[0];
+        const product = mockProducts[0]!;
 
         act(() => {
             result.current.addFavorite(product);
@@ -22,7 +22,7 @@ describe('useFavoritesStore', () => {
 
     it('should remove product from favorites', () => {
         const { result } = renderHook(() => useFavoritesStore());
-        const product = mockProducts[0];
+        const product = mockProducts[0]!;
 
         act(() => {
             result.current.addFavorite(product);
@@ -35,7 +35,7 @@ describe('useFavoritesStore', () => {
 
     it('should toggle favorite status', () => {
         const { result } = renderHook(() => useFavoritesStore());
-        const product = mockProducts[0];
+        const product = mockProducts[0]!;
 
         act(() => {
             result.current.toggleFavorite(product);
