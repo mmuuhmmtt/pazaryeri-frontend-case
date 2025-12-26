@@ -55,7 +55,7 @@ export const ProductCard = memo(function ProductCard({
         <div className="group relative h-full transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.02]">
             <Link
                 href={`/${locale}/products/${product.slug}`}
-                className="block h-full overflow-hidden rounded-2xl bg-gradient-to-br from-secondary-900 to-secondary-950 shadow-lg transition-all duration-300 hover:shadow-glow-purple dark:from-secondary-950 dark:to-black"
+                className="block h-full overflow-hidden rounded-2xl bg-gradient-to-br from-white to-secondary-50 dark:from-secondary-900 dark:to-secondary-950 shadow-lg transition-all duration-300 hover:shadow-glow-purple border border-secondary-200 dark:border-secondary-800"
             >
                 {/* Image Container with Gradient Overlay */}
                 <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-primary-900/20 to-accent-pink/20">
@@ -70,7 +70,7 @@ export const ProductCard = memo(function ProductCard({
                                 priority={priority}
                             />
                             {/* Gradient overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-secondary-100/80 dark:from-secondary-900/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                         </>
                     )}
 
@@ -106,7 +106,7 @@ export const ProductCard = memo(function ProductCard({
                                     "h-10 w-10 rounded-full p-0 backdrop-blur-md transition-all duration-200 hover:scale-110 active:scale-95",
                                     isLiked
                                         ? "bg-gradient-to-br from-primary-500 to-accent-pink shadow-glow-purple"
-                                        : "bg-black/40 hover:bg-black/60"
+                                        : "bg-secondary-200/60 dark:bg-black/40 hover:bg-secondary-300/80 dark:hover:bg-black/60"
                                 )}
                                 onClick={handleFavoriteClick}
                                 aria-label={

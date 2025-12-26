@@ -53,12 +53,12 @@ export default async function HomePage({
     return (
         <>
             <Header locale={locale} />
-            <main className="min-h-screen bg-gradient-to-br from-secondary-950 via-secondary-900 to-black relative overflow-hidden">
+            <main className="min-h-screen bg-gradient-to-br from-white via-secondary-50 to-secondary-100 dark:from-secondary-950 dark:via-secondary-900 dark:to-black relative overflow-hidden transition-colors duration-300">
                 {/* Animated Background Orbs */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-600/20 rounded-full blur-3xl animate-float" />
-                    <div className="absolute top-1/2 -left-40 w-96 h-96 bg-accent-pink/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
-                    <div className="absolute -bottom-40 right-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-600/10 dark:bg-primary-600/20 rounded-full blur-3xl animate-float" />
+                    <div className="absolute top-1/2 -left-40 w-96 h-96 bg-accent-pink/10 dark:bg-accent-pink/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+                    <div className="absolute -bottom-40 right-1/4 w-96 h-96 bg-accent-cyan/10 dark:bg-accent-cyan/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
                 </div>
 
                 <section className="relative min-h-[600px] overflow-hidden">
@@ -90,8 +90,8 @@ export default async function HomePage({
                         </video>
 
 
-                        {/* Modern Purple-Black Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-secondary-950/90 via-primary-900/80 to-secondary-950/90"></div>
+                        {/* Modern Purple-Black Gradient Overlay - Her iki modda da mor */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-secondary-900/85 via-primary-900/75 to-secondary-950/85 dark:from-secondary-950/90 dark:via-primary-900/80 dark:to-secondary-950/90 transition-opacity duration-300"></div>
 
 
                         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGMwIDMuMzE0LTIuNjg2IDYtNiA2cy02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiA2IDIuNjg2IDYgNnoiIGZpbGw9InJnYmEoMCwwLDAsMC4wNSkiLz48L2c+PC9zdmc+')] opacity-20"></div>

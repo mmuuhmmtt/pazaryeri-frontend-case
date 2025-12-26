@@ -29,8 +29,8 @@ export default async function LocaleLayout({
     const messages = await getMessages();
 
     return (
-        <html lang={locale} suppressHydrationWarning className="scroll-smooth dark">
-        <body className={`${inter.className} overflow-x-hidden bg-secondary-950 text-white`}>
+        <html lang={locale} suppressHydrationWarning className="scroll-smooth">
+        <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
             <ThemeProvider>
                 <PageTransition>

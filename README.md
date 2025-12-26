@@ -1,8 +1,8 @@
-# Pazaryeri Frontend Projesi
+# ShopNova  Projesi
 
 Modern, ölçeklenebilir ve performanslı bir e-ticaret frontend uygulaması.
 
-## 🚀 Proje Hakkında
+##  Proje Hakkında
 
 Bu proje **Next.js 15**, **TypeScript (Strict Mode)**, **Tailwind CSS** ve modern frontend best practices kullanılarak geliştirilmiştir. Production'a hazır, SEO optimized ve responsive bir yapıya sahiptir.
 

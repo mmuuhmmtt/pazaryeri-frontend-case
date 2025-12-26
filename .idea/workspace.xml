@@ -11,10 +11,7 @@
       <change beforePath="$PROJECT_DIR$/src/app/[locale]/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/products/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/features/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/features/header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/features/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/features/product-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/features/product-grid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/features/product-grid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/badge.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +94,7 @@
       <updated>1766561088839</updated>
       <workItem from="1766561089903" duration="19021000" />
       <workItem from="1766737704883" duration="3249000" />
+      <workItem from="1766747283170" duration="628000" />
     </task>
     <servers />
   </component>

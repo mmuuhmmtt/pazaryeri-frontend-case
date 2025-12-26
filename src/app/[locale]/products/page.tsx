@@ -140,7 +140,7 @@ export default function ProductsPage({ params }: { params: Promise<{ locale: str
     return (
         <>
             <Header locale={locale} />
-            <main className="min-h-screen bg-gradient-to-br from-secondary-950 via-secondary-900 to-black py-8 relative overflow-hidden">
+            <main className="min-h-screen bg-gradient-to-br from-white via-secondary-50 to-secondary-100 dark:from-secondary-950 dark:via-secondary-900 dark:to-black py-8 relative overflow-hidden transition-colors duration-300">
                 {/* Animated Background Elements */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl animate-float" />
