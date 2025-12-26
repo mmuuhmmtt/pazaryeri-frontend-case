@@ -333,18 +333,25 @@ Proje GitHub Pages'e deploy edilmek için hazırlanmıştır. Otomatik deploymen
 
 #### Adımlar:
 
-1. **GitHub Repository Oluşturun**
+1. **GitHub Repository'ye Push Edin**
    ```bash
    git init
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/KULLANICI_ADINIZ/REPO_ADI.git
+   git remote add origin https://github.com/mmuuhmmtt/pazaryeri-frontend-case.git
    git push -u origin main
+   ```
+   
+   **Not:** Eğer repository zaten varsa, sadece push yapın:
+   ```bash
+   git add .
+   git commit -m "Add GitHub Pages deployment"
+   git push origin main
    ```
 
 2. **GitHub Pages'i Aktifleştirin**
-   - Repository'nize gidin
+   - Repository'nize gidin: https://github.com/mmuuhmmtt/pazaryeri-frontend-case
    - Settings → Pages
    - Source: "GitHub Actions" seçin
    - Save
@@ -352,7 +359,7 @@ Proje GitHub Pages'e deploy edilmek için hazırlanmıştır. Otomatik deploymen
 3. **Otomatik Deploy**
    - `main` branch'ine push yaptığınızda otomatik olarak deploy başlar
    - Actions sekmesinden deploy durumunu takip edebilirsiniz
-   - Deploy tamamlandığında: `https://KULLANICI_ADINIZ.github.io/REPO_ADI/` adresinde canlı olur
+   - Deploy tamamlandığında: **https://mmuuhmmtt.github.io/pazaryeri-frontend-case/** adresinde canlı olur
 
 #### Notlar:
 - İlk deploy 5-10 dakika sürebilir
