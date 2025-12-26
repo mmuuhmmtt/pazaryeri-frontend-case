@@ -6,9 +6,8 @@ Modern, ölçeklenebilir ve performanslı bir e-ticaret frontend uygulaması.
 
 Bu proje **Next.js 15**, **TypeScript (Strict Mode)**, **Tailwind CSS** ve modern frontend best practices kullanılarak geliştirilmiştir. Production'a hazır, SEO optimized ve responsive bir yapıya sahiptir.
 
-**Case Requirements:** ✅ Tüm gereksinimler karşılanmıştır.
 
-## 📦 Teknolojiler
+## Teknolojiler
 
 - **Next.js 15.5.9** - React framework (App Router)
 - **TypeScript 5.7.2** - Type safety (Full Strict Mode)
@@ -19,7 +18,7 @@ Bu proje **Next.js 15**, **TypeScript (Strict Mode)**, **Tailwind CSS** ve moder
 - **Lucide React** - Icons
 - **Jest + React Testing Library** - Testing
 
-## 🏗️ Proje Yapısı
+##  Proje Yapısı
 
 ```
 src/
@@ -33,7 +32,7 @@ src/
 ├── components/
 │   ├── ui/                # Genel UI bileşenleri (Button, Badge)
 │   └── features/          # Özellik bazlı bileşenler (Header, ProductCard)
-├── services/              # API servis katmanı ⭐
+├── services/              # API servis katmanı 
 │   ├── api-client.ts      # Merkezi API client
 │   ├── product-service.ts # Ürün API çağrıları
 │   ├── category-service.ts
@@ -49,75 +48,72 @@ src/
 └── types/                 # TypeScript type definitions
 ```
 
-## ✅ Case Requirements Karşılama Durumu
 
-### 1. Framework & TypeScript ✅
-- ✅ Next.js 15.5.9 (en güncel stable versiyon)
-- ✅ TypeScript 5.7.2 with **Full Strict Mode**
+### 1. Framework & TypeScript 
+-  Next.js 15.5.9 
+-  TypeScript 5.7.2 with **Full Strict Mode**
   - `strict: true`
   - `noImplicitAny: true`
   - `strictNullChecks: true`
   - `noUncheckedIndexedAccess: true`
   - `exactOptionalPropertyTypes: true`
   - Ve tüm strict kurallar aktif
+### 2. Rendering & Performance 
+-  **SSG**: Ana sayfa ve ürün detay sayfaları
+-  **ISR Ready**: Backend hazır olduğunda aktif edilebilir
+-  **CSR**: Favoriler ve dinamik içerik
+-  `next/image` optimizasyonu
+-  Route & component bazlı code splitting
+-  Lazy loading (ProductGrid)
+-  React.memo memoization
+### 3. Internationalization (i18n) 
+-  TR (`/tr`) ve EN (`/en`) dil desteği
+-  URL tabanlı routing
+-  `next-intl` ile merkezi yönetim
+-  Tüm metinler i18n yapısında
 
-### 2. Rendering & Performance ✅
-- ✅ **SSG**: Ana sayfa ve ürün detay sayfaları
-- ✅ **ISR Ready**: Backend hazır olduğunda aktif edilebilir
-- ✅ **CSR**: Favoriler ve dinamik içerik
-- ✅ `next/image` optimizasyonu
-- ✅ Route & component bazlı code splitting
-- ✅ Lazy loading (ProductGrid)
-- ✅ React.memo memoization
+### 4. State Management 
+-  **Zustand** kullanımı
+-  Favoriler özelliği (localStorage persist)
+-  Normalize edilmiş state yapısı
+-  Test edilebilir mimari
 
-### 3. Internationalization (i18n) ✅
-- ✅ TR (`/tr`) ve EN (`/en`) dil desteği
-- ✅ URL tabanlı routing
-- ✅ `next-intl` ile merkezi yönetim
-- ✅ Tüm metinler i18n yapısında
+### 5. UI & Styling 
+-  **Tailwind CSS**
+-  **Storybook** kurulu (Button stories mevcut)
+-  **Dark Mode** desteği
+-  **Framer Motion** animasyonlar
+-  Responsive design (mobile-first)
 
-### 4. State Management ✅
-- ✅ **Zustand** kullanımı
-- ✅ Favoriler özelliği (localStorage persist)
-- ✅ Normalize edilmiş state yapısı
-- ✅ Test edilebilir mimari
+### 6. Veri Yönetimi 
+-  Mock JSON dosyaları
+-  **Services katmanı** (API çağrıları için hazır)
+-  Veri dönüşümleri ayrı katmanlarda
+-  Component'ler sadece ihtiyaç duydukları veriyi alır
 
-### 5. UI & Styling ✅
-- ✅ **Tailwind CSS**
-- ✅ **Storybook** kurulu (Button stories mevcut)
-- ✅ **Dark Mode** desteği
-- ✅ **Framer Motion** animasyonlar
-- ✅ Responsive design (mobile-first)
+### 7. SEO & Accessibility 
+-  Dynamic metadata (her sayfa için)
+-  OpenGraph & Twitter Cards
+-  JSON-LD schema.org
+-  404 ve 500 hata sayfaları
+-  `sitemap.xml` ve `robots.txt`
+-  Semantic HTML
+-  ARIA labels
 
-### 6. Veri Yönetimi ✅
-- ✅ Mock JSON dosyaları
-- ✅ **Services katmanı** (API çağrıları için hazır)
-- ✅ Veri dönüşümleri ayrı katmanlarda
-- ✅ Component'ler sadece ihtiyaç duydukları veriyi alır
+### 8. Kod Kalitesi 
+-  ESLint
+-  Prettier
+-  TypeScript strict mode
+-  Naming conventions
+-  Separation of concerns
+-  Clean architecture
 
-### 7. SEO & Accessibility ✅
-- ✅ Dynamic metadata (her sayfa için)
-- ✅ OpenGraph & Twitter Cards
-- ✅ JSON-LD schema.org
-- ✅ 404 ve 500 hata sayfaları
-- ✅ `sitemap.xml` ve `robots.txt`
-- ✅ Semantic HTML
-- ✅ ARIA labels
+### 9. Testing 
+-  Jest + React Testing Library
+-  Component testleri (Button)
+-  Store testleri (useFavoritesStore)
 
-### 8. Kod Kalitesi ✅
-- ✅ ESLint
-- ✅ Prettier
-- ✅ TypeScript strict mode
-- ✅ Naming conventions
-- ✅ Separation of concerns
-- ✅ Clean architecture
-
-### 9. Testing ✅
-- ✅ Jest + React Testing Library
-- ✅ Component testleri (Button)
-- ✅ Store testleri (useFavoritesStore)
-
-## 🚦 Nasıl Çalıştırılır?
+##  Nasıl Çalıştırılır?
 
 ### Geliştirme Ortamı
 
@@ -178,12 +174,12 @@ NEXT_PUBLIC_API_URL=https://api.meshur.co
 `src/services/` klasöründeki TODO yorumlarını açın:
 
 ```typescript
-// ❌ ŞU AN (Mock data)
+//  ŞU AN (Mock data)
 export async function getProducts(): Promise<Product[]> {
     return Promise.resolve(mockProducts);
 }
 
-// ✅ BACKEND HAZIR OLUNCA
+//  BACKEND HAZIR OLUNCA
 export async function getProducts(params?: GetProductsParams): Promise<Product[]> {
     const response = await apiClient.get<PaginatedResponse<Product>>('/products', params);
     return response.data.data;
@@ -192,29 +188,24 @@ export async function getProducts(params?: GetProductsParams): Promise<Product[]
 
 ### API Client Özellikleri
 
-- ✅ Merkezi API client (fetch wrapper)
-- ✅ Automatic retry logic (5xx errors)
-- ✅ Request timeout (30s)
-- ✅ Error handling
-- ✅ Type-safe requests
-- ✅ Authentication ready (Bearer token)
-- ✅ Request/response logging
+-  Merkezi API client (fetch wrapper)
+-  Automatic retry logic (5xx errors)
+-  Request timeout (30s)
+-  Error handling
+-  Type-safe requests
+-  Authentication ready (Bearer token)
+-  Request/response logging
 
-## 📐 Mimari Kararlar
+##  Mimari Kararlar
 
 ### 1. Component Yapısı
 
-**Neden Atomic Design YOK?**
 
-Hocanızın talebi üzerine Atomic Design yapısı kaldırıldı. Yerine daha basit ve modern bir yapı tercih edildi:
 
 - `components/ui/` - Genel UI bileşenleri
 - `components/features/` - Özellik bazlı bileşenler
 
-**Trade-off:**
-- ✅ Daha basit ve anlaşılır
-- ✅ Daha az klasör derinliği
-- ❌ Atomic Design prensiplerine uygun değil (case requirement)
+
 
 ### 2. Services Katmanı
 
@@ -222,10 +213,10 @@ Hocanızın talebi üzerine Atomic Design yapısı kaldırıldı. Yerine daha ba
 
 Backend bağlantıları component'lerin içinde DEĞİL, ayrı bir services katmanında:
 
-- ✅ Separation of Concerns
-- ✅ Reusability
-- ✅ Testability
-- ✅ Maintainability
+-  Separation of Concerns
+-  Reusability
+-  Testability
+-  Maintainability
 
 ### 3. TypeScript Strict Mode
 
@@ -244,7 +235,7 @@ Backend bağlantıları component'lerin içinde DEĞİL, ayrı bir services katm
 }
 ```
 
-**Sonuç:** Sıfır TypeScript hatası ✅
+**Sonuç:** Sıfır TypeScript hatası 
 
 ### 4. Rendering Strategy
 
@@ -261,35 +252,35 @@ Backend bağlantıları component'lerin içinde DEĞİL, ayrı bir services katm
 
 **Zustand Seçimi:**
 
-- ✅ Minimal boilerplate
-- ✅ TypeScript support
-- ✅ DevTools
-- ✅ Middleware (persist)
-- ✅ React 19 compatible
+-  Minimal boilerplate
+-  TypeScript support
+-  DevTools
+-  Middleware (persist)
+-  React 19 compatible
 
 ## 🎨 Özellikler
 
 ### Kullanıcı Özellikleri
-- ✅ Ürün listeleme ve detay
-- ✅ Gelişmiş arama ve filtreleme
-- ✅ Sıralama (fiyat, rating, tarih)
-- ✅ Pagination
-- ✅ Favorilere ekleme
-- ✅ Dark mode
-- ✅ Responsive design
-- ✅ Animasyonlar
-- ✅ Video background hero
+-  Ürün listeleme ve detay
+-  Gelişmiş arama ve filtreleme
+-  Sıralama (fiyat, rating, tarih)
+-  Pagination
+-  Favorilere ekleme
+-  Dark mode
+-  Responsive design
+-  Animasyonlar
+-  Video background hero
 
 ### Teknik Özellikler
-- ✅ SEO optimized
-- ✅ Type-safe
-- ✅ Error boundaries
-- ✅ Loading states
-- ✅ Image optimization
-- ✅ Code splitting
-- ✅ i18n support
+-  SEO optimized
+-  Type-safe
+-  Error boundaries
+-  Loading states
+-  Image optimization
+-  Code splitting
+-  i18n support
 
-## 📝 Scripts
+##  Scripts
 
 ```bash
 npm run dev          # Development server
@@ -302,7 +293,7 @@ npm test             # Jest tests
 npm run storybook    # Storybook
 ```
 
-## 🔍 Meshur.co API Entegrasyonu
+##  Meshur.co API Entegrasyonu
 
 Proje **Meshur.co API yapısına uygun** olarak tasarlanmıştır:
 
@@ -324,34 +315,9 @@ GET    /api/v1/brands                # Marka listesi
 GET    /api/v1/brands/:slug          # Marka detay
 ```
 
-### Type Definitions
 
-Tüm API response'ları için type tanımları mevcut:
 
-```typescript
-interface ApiResponse<T> {
-    data: T;
-    success: boolean;
-    message?: string;
-    timestamp?: string;
-}
-
-interface PaginatedResponse<T> {
-    data: T[];
-    pagination: {
-        page: number;
-        pageSize: number;
-        totalItems: number;
-        totalPages: number;
-        hasNextPage: boolean;
-        hasPreviousPage: boolean;
-    };
-}
-```
-
-## 🚀 Deployment
-
-Proje Vercel'e deploy edilebilir:
+##  Deployment
 
 ```bash
 vercel deploy
@@ -359,20 +325,9 @@ vercel deploy
 
 **Live Demo:** [https://pazaryeri-frontend-case.vercel.app](https://pazaryeri-frontend-case.vercel.app)
 
-## 📋 Yapılacaklar
 
-Backend hazır olduğunda:
 
-- [ ] API entegrasyonunu aktif et
-- [ ] ISR stratejisini uygula
-- [ ] Authentication ekle
-- [ ] Shopping cart
-- [ ] Checkout process
-- [ ] User profile
-- [ ] Order history
-- [ ] Product reviews
 
-## 🎯 Case Değerlendirme Notları
 
 ### Güçlü Yönler
 
@@ -384,18 +339,9 @@ Backend hazır olduğunda:
 6. **i18n** - Complete internationalization
 7. **Testing** - Jest + RTL setup
 
-### Trade-offs
 
-1. **Atomic Design** - Hocanın talebi üzerine kaldırıldı (case requirement ile çelişiyor)
-2. **Next.js 16** - Henüz çıkmadı, 15.5.9 kullanıldı (en güncel stable)
-3. **Storybook** - Sadece Button story var (tüm componentler için yazılabilir)
 
-### Öneriler
 
-- Atomic Design'a geri dönülebilir (case requirement)
-- Daha fazla Storybook story eklenebilir
-- Daha fazla test yazılabilir
-- Meshur.co UX'i daha detaylı incelenebilir
 
 ## 👤 Geliştirici
 
@@ -403,8 +349,5 @@ Backend hazır olduğunda:
 
 ## 📄 Lisans
 
-Bu proje bir teknik değerlendirme case'i için geliştirilmiştir.
 
 ---
-
-**Not:** Proje hocanızın talebi üzerine Atomic Design yapısı olmadan geliştirilmiştir. Case requirements'ta Atomic Design istenmektedir. Gerekirse bu yapı geri eklenebilir.
