@@ -319,11 +319,45 @@ GET    /api/v1/brands/:slug          # Marka detay
 
 ##  Deployment
 
+### Vercel (Önerilen)
+
 ```bash
 vercel deploy
 ```
 
 **Live Demo:** [https://pazaryeri-frontend-case.vercel.app](https://pazaryeri-frontend-case.vercel.app)
+
+### GitHub Pages
+
+Proje GitHub Pages'e deploy edilmek için hazırlanmıştır. Otomatik deployment için GitHub Actions kullanılır.
+
+#### Adımlar:
+
+1. **GitHub Repository Oluşturun**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git branch -M main
+   git remote add origin https://github.com/KULLANICI_ADINIZ/REPO_ADI.git
+   git push -u origin main
+   ```
+
+2. **GitHub Pages'i Aktifleştirin**
+   - Repository'nize gidin
+   - Settings → Pages
+   - Source: "GitHub Actions" seçin
+   - Save
+
+3. **Otomatik Deploy**
+   - `main` branch'ine push yaptığınızda otomatik olarak deploy başlar
+   - Actions sekmesinden deploy durumunu takip edebilirsiniz
+   - Deploy tamamlandığında: `https://KULLANICI_ADINIZ.github.io/REPO_ADI/` adresinde canlı olur
+
+#### Notlar:
+- İlk deploy 5-10 dakika sürebilir
+- Sonraki deploy'lar daha hızlı olur
+- Custom domain kullanmak isterseniz, `next.config.mjs`'deki `basePath` ayarını kaldırın
 
 
 
