@@ -25,28 +25,37 @@ export const Header = ({ locale }: HeaderProps) => {
     }, [getFavoriteCount]);
 
     return (
-        <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur dark:bg-secondary-900/80">
+        <header className="sticky top-0 z-50 border-b border-primary-500/20 bg-secondary-950/95 backdrop-blur-xl shadow-lg shadow-primary-500/10">
             <div className="container mx-auto px-4">
                 <div className="flex h-16 items-center justify-between">
-                    <Link href={`/${locale}`} className="text-xl font-bold text-primary-600">
-                        <ShoppingCart className="inline h-6 w-6" /> ShopNova
+                    <Link href={`/${locale}`} className="flex items-center gap-2 text-xl font-black">
+                        <div className="rounded-xl bg-gradient-to-br from-primary-500 to-accent-pink p-2 shadow-glow-purple">
+                            <ShoppingCart className="h-5 w-5 text-white" />
+                        </div>
+                        <span className="bg-gradient-to-r from-primary-400 to-accent-pink bg-clip-text text-transparent">
+                            ShopNova
+                        </span>
                     </Link>
 
-                    <nav className="hidden gap-4 md:flex">
+                    <nav className="hidden gap-3 md:flex">
                         <Link
                             href={`/${locale}`}
-                            className="group relative rounded-xl bg-gradient-to-br from-red-500 via-red-600 to-red-700 px-6 py-3 text-sm font-bold text-black shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/30"
+                            className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 px-6 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-glow-purple"
                         >
-                            <span className="relative z-10">{t('nav.home')}</span>
-                            <span className="absolute inset-0 rounded-xl bg-white opacity-0 transition-opacity group-hover:opacity-20"></span>
+                            <span className="relative z-10 flex items-center gap-2">
+                                {t('nav.home')}
+                            </span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-pink opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                         </Link>
 
                         <Link
                             href={`/${locale}/products`}
-                            className="group relative rounded-xl bg-gradient-to-br from-red-500 via-red-600 to-red-700 px-6 py-3 text-sm font-bold text-black shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/30"
+                            className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-accent-pink to-primary-600 px-6 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-glow-pink"
                         >
-                            <span className="relative z-10">{t('nav.products')}</span>
-                            <span className="absolute inset-0 rounded-xl bg-white opacity-0 transition-opacity group-hover:opacity-20"></span>
+                            <span className="relative z-10 flex items-center gap-2">
+                                ✨ {t('nav.products')}
+                            </span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan to-primary-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                         </Link>
                     </nav>
 
@@ -73,8 +82,14 @@ export const Header = ({ locale }: HeaderProps) => {
                             </Button>
                         </Link>
 
-                        <Link href={locale === 'tr' ? '/en' : '/tr'} className="text-sm font-medium">
-                            {locale === 'tr' ? 'EN' : 'TR'}
+                        <Link href={locale === 'tr' ? '/en' : '/tr'}>
+                            <Button 
+                                variant="outline" 
+                                size="sm"
+                                className="h-9 px-4 font-bold border-2 border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white transition-all duration-300"
+                            >
+                                {locale === 'tr' ? '🌐 EN' : '🌐 TR'}
+                            </Button>
                         </Link>
                     </div>
                 </div>

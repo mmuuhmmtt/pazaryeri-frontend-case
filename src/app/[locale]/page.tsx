@@ -53,7 +53,13 @@ export default async function HomePage({
     return (
         <>
             <Header locale={locale} />
-            <main className="min-h-screen bg-gradient-to-b from-white to-secondary-50 transition-colors dark:from-secondary-900 dark:to-secondary-950">
+            <main className="min-h-screen bg-gradient-to-br from-secondary-950 via-secondary-900 to-black relative overflow-hidden">
+                {/* Animated Background Orbs */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary-600/20 rounded-full blur-3xl animate-float" />
+                    <div className="absolute top-1/2 -left-40 w-96 h-96 bg-accent-pink/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+                    <div className="absolute -bottom-40 right-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+                </div>
 
                 <section className="relative min-h-[600px] overflow-hidden">
                     {/* Video Background */}
@@ -84,7 +90,8 @@ export default async function HomePage({
                         </video>
 
 
-                        <div className="absolute inset-0 bg-gradient-to-r from-red-900/70 via-red-800/60 to-red-900/70"></div>
+                        {/* Modern Purple-Black Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-secondary-950/90 via-primary-900/80 to-secondary-950/90"></div>
 
 
                         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGMwIDMuMzE0LTIuNjg2IDYtNiA2cy02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiA2IDIuNjg2IDYgNnoiIGZpbGw9InJnYmEoMCwwLDAsMC4wNSkiLz48L2c+PC9zdmc+')] opacity-20"></div>
@@ -94,10 +101,10 @@ export default async function HomePage({
                     <div className="container relative z-10 mx-auto flex min-h-[600px] items-center px-4">
                         <div className="max-w-2xl">
 
-                            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
-                                <span className="h-2 w-2 animate-pulse rounded-full bg-red-400"></span>
-                                <span className="text-sm font-semibold text-white">
-                    🚀 {locale === 'tr' ? 'TREND ÜRÜNLER' : 'TRENDING NOW'}
+                            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-500/20 to-accent-pink/20 border border-primary-400/30 px-5 py-2 backdrop-blur-md shadow-glow-purple">
+                                <span className="h-2 w-2 animate-pulse rounded-full bg-gradient-to-r from-primary-400 to-accent-pink shadow-glow-pink"></span>
+                                <span className="text-sm font-bold bg-gradient-to-r from-white to-primary-200 bg-clip-text text-transparent">
+                    ✨ {locale === 'tr' ? 'TREND ÜRÜNLER' : 'TRENDING NOW'}
                 </span>
                             </div>
 
@@ -116,48 +123,60 @@ export default async function HomePage({
                             <div className="flex flex-wrap gap-4">
                                 <Link
                                     href={`/${locale}/products`}
-                                    className="group relative inline-flex items-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-white to-red-100 px-8 py-4 text-lg font-bold text-red-700 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl"
+                                    className="group relative inline-flex items-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 via-accent-pink to-primary-600 px-10 py-5 text-lg font-black text-white shadow-2xl shadow-primary-500/50 transition-all duration-300 hover:scale-110 hover:shadow-glow-purple"
                                 >
-                    <span className="relative z-10 flex items-center gap-2">
+                    <span className="relative z-10 flex items-center gap-3">
+                        <span className="text-2xl">🚀</span>
                         {locale === 'tr' ? 'ÜRÜNLERİ KEŞFET' : 'EXPLORE PRODUCTS'}
-                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
+                        <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-3" />
                     </span>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-red-100 to-white opacity-0 transition-opacity group-hover:opacity-30"></div>
+                                    {/* Animated gradient overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan via-primary-500 to-accent-pink opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                                    {/* Shine effect */}
+                                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full"></div>
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Featured Products */}
-                <section className="py-16 transition-colors">
+                {/* Featured Products with Modern Design */}
+                <section className="py-20 relative z-10">
                     <div className="container">
-                        <div className="mb-12 text-center">
-                            <h2 className="mb-3 text-4xl font-bold text-secondary-900 dark:text-secondary-100 md:text-5xl">
-                                {t('featured.title')}
+                        <div className="mb-16 text-center animate-slide-up">
+                            <h2 className="mb-4 text-5xl font-black md:text-6xl">
+                                <span className="bg-gradient-to-r from-primary-400 via-accent-pink to-accent-cyan bg-clip-text text-transparent">
+                                    {t('featured.title')}
+                                </span>
                             </h2>
-                            <p className="text-lg text-secondary-600 dark:text-secondary-400 md:text-xl">
+                            <p className="text-xl text-secondary-400 md:text-2xl">
                                 {t('featured.subtitle')}
                             </p>
+                            <div className="mx-auto mt-6 h-1 w-32 bg-gradient-to-r from-primary-600 via-accent-pink to-accent-cyan rounded-full" />
                         </div>
                         <ProductGrid products={featuredProducts} locale={locale} />
                     </div>
                 </section>
 
-                {/* All Products */}
-                <section className="bg-white py-16 transition-colors dark:bg-secondary-800">
+                {/* All Products with Glass Effect */}
+                <section className="py-20 relative z-10">
                     <div className="container">
-                        <div className="mb-12">
-                            <h2 className="mb-2 text-4xl font-bold text-secondary-900 dark:text-secondary-100 md:text-5xl">
-                                {t('allProducts.title')}
-                            </h2>
-                            <p className="text-lg text-secondary-600 dark:text-secondary-400">
-                                {locale === 'tr'
-                                    ? `${mockProducts.length} ürün arasından seçim yapın`
-                                    : `Choose from ${mockProducts.length} products`}
-                            </p>
+                        {/* Glass Card Container */}
+                        <div className="rounded-3xl bg-secondary-900/50 backdrop-blur-xl border border-primary-500/20 p-8 md:p-12 shadow-2xl animate-fade-in">
+                            <div className="mb-12">
+                                <h2 className="mb-4 text-4xl font-black text-white md:text-5xl">
+                                    <span className="bg-gradient-to-r from-white to-primary-300 bg-clip-text text-transparent">
+                                        {t('allProducts.title')}
+                                    </span>
+                                </h2>
+                                <p className="text-lg text-secondary-300">
+                                    {locale === 'tr'
+                                        ? `${mockProducts.length} ürün arasından seçim yapın`
+                                        : `Choose from ${mockProducts.length} products`}
+                                </p>
+                            </div>
+                            <ProductGrid products={mockProducts} locale={locale} />
                         </div>
-                        <ProductGrid products={mockProducts} locale={locale} />
                     </div>
                 </section>
             </main>

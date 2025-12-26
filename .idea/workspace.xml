@@ -6,27 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="e4502ce7-25bf-4a6b-aa8d-d8dc51840c8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[locale]/error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/error.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[locale]/favorites/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/favorites/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[locale]/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[locale]/products/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/products/[slug]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/[locale]/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/products/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/atoms/Badge/Badge.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/atoms/Button/Button.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/atoms/Button/Button.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/atoms/Button/Button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/molecules/Pagination/Pagination.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/molecules/ProductCard/ProductCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/molecules/ProductFilters/ProductFilters.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/molecules/ProductSearch/ProductSearch.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/organisms/Header/Header.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/organisms/ProductGrid/ProductGrid.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mock-data/products.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mock-data/products.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/useFavoritesStore.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/useFavoritesStore.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/features/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/features/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/features/product-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/features/product-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/features/product-grid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/features/product-grid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/badge.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,27 +39,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "C:\\frontend-yol-haritası\\pazaryeri-frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\frontend-yol-haritası\\pazaryeri-frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\frontend-yol-haritası\pazaryeri-frontend\public\videos" />
@@ -108,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1766561088839</updated>
       <workItem from="1766561089903" duration="19021000" />
-      <workItem from="1766737704883" duration="300000" />
+      <workItem from="1766737704883" duration="3249000" />
     </task>
     <servers />
   </component>

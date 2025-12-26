@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useMemo, use } from 'react';
+import { useState, useMemo, use, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { Header } from '@/components/features/header';
 import { ProductGrid } from '@/components/features/product-grid';
 import { ProductFilters } from '@/components/features/product-filters';
@@ -43,13 +44,16 @@ export default function ProductsPage({ params }: { params: Promise<{ locale: str
         (searchParams.get('sort') as SortOption) || 'featured'
     );
     const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
-    const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page')) || 1);
+    
+    // currentPage'i doğrudan URL'den oku (single source of truth)
+    const currentPage = Number(searchParams.get('page')) || 1;
 
     const pageSize = 12;
 
 
     const processedProducts = useMemo(() => {
         let result = [...mockProducts];
+        
 
         // Search
         if (searchQuery) {
@@ -100,13 +104,13 @@ export default function ProductsPage({ params }: { params: Promise<{ locale: str
     };
 
     const handlePageChange = (page: number) => {
-        setCurrentPage(page);
+        // Sadece URL'i güncelle, state URL'den otomatik okunacak
         updateURL({ page: page.toString() }, true);
     };
 
     const handleFiltersChange = (newFilters: FilterOptions) => {
         setFilters(newFilters);
-        setCurrentPage(1);
+        // Filtre değiştiğinde sayfa 1'e dön
         const params: Record<string, string | null> = { page: null };
         if (newFilters.categories) {
             params.categories = newFilters.categories.join(',');
@@ -123,32 +127,57 @@ export default function ProductsPage({ params }: { params: Promise<{ locale: str
 
     const handleSortChange = (sort: SortOption) => {
         setSortOption(sort);
-        setCurrentPage(1);
+        // Sıralama değiştiğinde sayfa 1'e dön
         updateURL({ sort, page: null }, false);
     };
 
     const handleSearch = (query: string) => {
         setSearchQuery(query);
-        setCurrentPage(1);
+        // Arama değiştiğinde sayfa 1'e dön
         updateURL({ search: query || null, page: null }, false);
     };
 
     return (
         <>
             <Header locale={locale} />
-            <main className="min-h-screen bg-gradient-to-b from-white to-secondary-50 py-8 transition-colors dark:from-secondary-900 dark:to-secondary-950">
-                <div className="container mx-auto px-4">
-                    {/* Page Header */}
-                    <div className="mb-8">
-                        <h1 className="text-4xl font-bold text-secondary-900 dark:text-secondary-100">
-                            {locale === 'tr' ? 'Tüm Ürünler' : 'All Products'}
+            <main className="min-h-screen bg-gradient-to-br from-secondary-950 via-secondary-900 to-black py-8 relative overflow-hidden">
+                {/* Animated Background Elements */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl animate-float" />
+                    <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-pink/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+                    <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent-cyan/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                </div>
+                
+                <div className="container mx-auto px-4 relative z-10">
+                    {/* Page Header with Gradient */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-12 text-center"
+                    >
+                        <h1 className="text-5xl md:text-6xl font-black mb-4">
+                            <span className="bg-gradient-to-r from-primary-400 via-accent-pink to-accent-cyan bg-clip-text text-transparent">
+                                {locale === 'tr' ? 'Tüm Ürünler' : 'All Products'}
+                            </span>
                         </h1>
-                        <p className="mt-2 text-lg text-secondary-600 dark:text-secondary-400">
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            className="text-xl text-secondary-400"
+                        >
                             {locale === 'tr'
                                 ? `${processedProducts.length} ürün bulundu`
                                 : `${processedProducts.length} products found`}
-                        </p>
-                    </div>
+                        </motion.p>
+                        {/* Decorative Line */}
+                        <motion.div 
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ delay: 0.4, duration: 0.6 }}
+                            className="mx-auto mt-6 h-1 w-32 bg-gradient-to-r from-primary-600 via-accent-pink to-accent-cyan rounded-full"
+                        />
+                    </motion.div>
 
                     {/* Search */}
                     <ProductSearch onSearch={handleSearch} locale={locale} />

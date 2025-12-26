@@ -1,7 +1,6 @@
 'use client';
 
 import { memo } from 'react';
-import { motion } from 'framer-motion';
 import type { Product } from '@/types';
 import { ProductCard } from '@/components/features/product-card';
 
@@ -9,16 +8,6 @@ export interface ProductGridProps {
     products: Product[];
     locale: string;
 }
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-        },
-    },
-};
 
 export const ProductGrid = memo(function ProductGrid({ products, locale }: ProductGridProps) {
     if (products.length === 0) {
@@ -32,20 +21,20 @@ export const ProductGrid = memo(function ProductGrid({ products, locale }: Produ
     }
 
     return (
-        <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        >
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 animate-fade-in">
             {products.map((product, index) => (
-                <ProductCard
+                <div 
                     key={product.id}
-                    product={product}
-                    locale={locale}
-                    priority={index < 4}
-                />
+                    className="animate-slide-up"
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                    <ProductCard
+                        product={product}
+                        locale={locale}
+                        priority={index < 4}
+                    />
+                </div>
             ))}
-        </motion.div>
+        </div>
     );
 });

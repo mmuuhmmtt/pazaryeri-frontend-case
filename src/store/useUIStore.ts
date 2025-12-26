@@ -25,7 +25,7 @@ export const useUIStore = create<UIStore>((set) => ({
     isMobileMenuOpen: false,
     isFilterSidebarOpen: false,
     isSearchOpen: false,
-    theme: 'system',
+    theme: 'dark', // Default dark mode
 
     // Actions
     toggleMobileMenu: () =>

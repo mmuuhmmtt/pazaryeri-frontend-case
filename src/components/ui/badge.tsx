@@ -15,20 +15,20 @@ export const Badge = ({
                           className,
                       }: BadgeProps) => {
     const baseStyles =
-        'inline-flex items-center justify-center font-semibold transition-colors rounded-md';
+        'inline-flex items-center justify-center font-bold transition-all duration-300 rounded-lg hover:scale-110 hover:shadow-lg cursor-default animate-fade-in';
 
     const variants = {
         default:
-            'bg-secondary-100 text-secondary-800 dark:bg-secondary-700 dark:text-secondary-100',
+            'bg-gradient-to-r from-secondary-100 to-secondary-200 text-secondary-800 dark:from-secondary-700 dark:to-secondary-800 dark:text-secondary-100',
         primary:
-            'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-100',
+            'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-glow-purple hover:from-primary-400 hover:to-primary-500',
         secondary:
-            'bg-secondary-100 text-secondary-800 dark:bg-secondary-700 dark:text-secondary-100',
-        success: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100',
+            'bg-gradient-to-r from-secondary-500 to-secondary-600 text-white hover:from-secondary-400 hover:to-secondary-500',
+        success: 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-400 hover:to-green-500',
         warning:
-            'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100',
-        danger: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100',
-        info: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100',
+            'bg-gradient-to-r from-yellow-500 to-yellow-600 text-white hover:from-yellow-400 hover:to-yellow-500',
+        danger: 'bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-400 hover:to-red-500 animate-glow-pulse',
+        info: 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-400 hover:to-blue-500',
     };
 
     const sizes = {
@@ -39,7 +39,7 @@ export const Badge = ({
 
     return (
         <span className={cn(baseStyles, variants[variant], sizes[size], className)}>
-            {children}
+            <span className="relative z-10">{children}</span>
         </span>
     );
 };
