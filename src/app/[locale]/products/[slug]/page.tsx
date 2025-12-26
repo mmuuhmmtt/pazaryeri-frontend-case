@@ -3,11 +3,11 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Header } from '@/components/features/header';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { AddToCartButton } from '@/components/features/add-to-cart-button';
 import { mockProducts } from '@/mock-data/products';
 import { formatPrice } from '@/lib/utils';
-import { Star, ShoppingCart, Heart } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 export async function generateStaticParams() {
     return mockProducts.map((product) => ({
@@ -199,15 +199,8 @@ export default async function ProductDetailPage({
                                 </div>
                             )}
 
-                            {/* Actions */}
-                            <div className="flex gap-3">
-                                <Button size="lg" className="flex-1" leftIcon={<ShoppingCart />}>
-                                    {t('product.addToCart')}
-                                </Button>
-                                <Button variant="outline" size="lg">
-                                    <Heart className="h-5 w-5" />
-                                </Button>
-                            </div>
+                            {/* Add to Cart */}
+                            <AddToCartButton product={product} locale={locale} />
                         </div>
                     </div>
                 </div>

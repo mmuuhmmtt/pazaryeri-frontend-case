@@ -108,13 +108,13 @@ export default async function HomePage({
                 </span>
                             </div>
 
-                            <h1 className="mb-4 text-5xl font-black leading-tight text-white md:text-6xl lg:text-7xl">
+                            <h1 className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight text-white">
                 <span className="drop-shadow-2xl">
                     {t('hero.title')}
                 </span>
                             </h1>
 
-                            <p className="mb-8 text-xl text-white/90 md:text-2xl">
+                            <p className="mb-6 sm:mb-8 text-lg sm:text-xl text-white/90 md:text-2xl">
                 <span className="drop-shadow-lg">
                     {t('hero.subtitle')}
                 </span>
@@ -123,7 +123,7 @@ export default async function HomePage({
                             <div className="flex flex-wrap gap-4">
                                 <Link
                                     href={`/${locale}/products`}
-                                    className="group relative inline-flex items-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 via-accent-pink to-primary-600 px-10 py-5 text-lg font-black text-white shadow-2xl shadow-primary-500/50 transition-all duration-300 hover:scale-110 hover:shadow-glow-purple"
+                                    className="group relative inline-flex items-center gap-2 sm:gap-3 overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-r from-primary-600 via-accent-pink to-primary-600 px-6 py-3 sm:px-10 sm:py-5 text-base sm:text-lg font-black text-white shadow-2xl shadow-primary-500/50 transition-all duration-300 hover:scale-105 sm:hover:scale-110 hover:shadow-glow-purple active:scale-95"
                                 >
                     <span className="relative z-10 flex items-center gap-3">
                         <span className="text-2xl">🚀</span>
