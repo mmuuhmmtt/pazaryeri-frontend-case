@@ -2,12 +2,24 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { locales } from '@/i18n/config';
 import { PageTransition } from '@/components/ui/page-transition';
 import { ThemeProvider } from '@/components/ui/theme-provider';
 import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+    icons: {
+        icon: [
+            { url: '/icon.svg', type: 'image/svg+xml' },
+            { url: '/icon.svg', type: 'image/svg+xml', sizes: 'any' },
+        ],
+        shortcut: '/icon.svg',
+        apple: '/icon.svg',
+    },
+};
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
