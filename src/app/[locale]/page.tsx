@@ -21,13 +21,27 @@ const ProductGrid = dynamic(
     }
 );
 
+// Static export için gerekli
+export const dynamic = 'force-static';
+
 export async function generateMetadata({
                                            params,
                                        }: {
-    params: Promise<{ locale: string }>;
+    params: Promise<{ locale: string }> | { locale: string };
 }): Promise<Metadata> {
-    const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'meta.home' });
+    // Static export için params Promise olmayabilir
+    const { locale } = params instanceof Promise ? await params : params;
+    
+    // Static export için getTranslations() fallback ile
+    let t: any;
+    try {
+        t = await getTranslations({ locale, namespace: 'meta.home' });
+    } catch (error) {
+        // Fallback: direkt import (static export için)
+        const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
+        const metaMessages = messages?.meta?.home || {};
+        t = (key: string) => metaMessages[key] || key;
+    }
 
     return {
         title: t('title'),
@@ -43,10 +57,28 @@ export async function generateMetadata({
 export default async function HomePage({
                                            params,
                                        }: {
-    params: Promise<{ locale: string }>;
+    params: Promise<{ locale: string }> | { locale: string };
 }) {
-    const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'home' });
+    // Static export için params Promise olmayabilir
+    const { locale } = params instanceof Promise ? await params : params;
+    
+    // Static export için getTranslations() fallback ile
+    let t: any;
+    try {
+        t = await getTranslations({ locale, namespace: 'home' });
+    } catch (error) {
+        // Fallback: direkt import (static export için)
+        const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
+        const homeMessages = messages?.home || {};
+        t = (key: string) => {
+            const keys = key.split('.');
+            let value: any = homeMessages;
+            for (const k of keys) {
+                value = value?.[k];
+            }
+            return value || key;
+        };
+    }
 
     const featuredProducts = mockProducts.filter((p) => p.isFeatured);
 

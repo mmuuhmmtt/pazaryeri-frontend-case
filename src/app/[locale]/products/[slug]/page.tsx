@@ -9,6 +9,9 @@ import { mockProducts } from '@/mock-data/products';
 import { formatPrice } from '@/lib/utils';
 import { Star } from 'lucide-react';
 
+// Static export için gerekli
+export const dynamic = 'force-static';
+
 export async function generateStaticParams() {
     return mockProducts.map((product) => ({
         slug: product.slug,
@@ -18,9 +21,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
                                            params,
                                        }: {
-    params: Promise<{ locale: string; slug: string }>;
+    params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
 }): Promise<Metadata> {
-    const { locale, slug } = await params;
+    // Static export için params Promise olmayabilir
+    const { locale, slug } = params instanceof Promise ? await params : params;
 
     const product = mockProducts.find((p) => p.slug === slug);
 
@@ -54,10 +58,28 @@ export async function generateMetadata({
 export default async function ProductDetailPage({
                                                     params,
                                                 }: {
-    params: Promise<{ locale: string; slug: string }>;
+    params: Promise<{ locale: string; slug: string }> | { locale: string; slug: string };
 }) {
-    const { locale, slug } = await params;
-    const t = await getTranslations({ locale });
+    // Static export için params Promise olmayabilir
+    const { locale, slug } = params instanceof Promise ? await params : params;
+    
+    // Static export için getTranslations() fallback ile
+    let t: any;
+    try {
+        t = await getTranslations({ locale });
+    } catch (error) {
+        // Fallback: direkt import (static export için)
+        const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
+        const productMessages = messages?.product || {};
+        t = (key: string) => {
+            const keys = key.split('.');
+            let value: any = productMessages;
+            for (const k of keys) {
+                value = value?.[k];
+            }
+            return value || key;
+        };
+    }
 
     const product = mockProducts.find((p) => p.slug === slug);
 
