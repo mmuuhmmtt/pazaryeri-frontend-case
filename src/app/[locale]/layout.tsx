@@ -13,24 +13,15 @@ export default async function LocaleLayout({
                                                params,
                                            }: {
     children: React.ReactNode;
-    params: Promise<{ locale: string }> | { locale: string };
+    params: Promise<{ locale: string }>;
 }) {
-    // Static export için params Promise olmayabilir
-    const { locale } = params instanceof Promise ? await params : params;
+    const { locale } = await params;
 
     if (!locales.includes(locale as never)) {
         notFound();
     }
 
-    // Static export için messages'ı direkt import et
-    // getMessages() static export'ta çalışmayabilir
-    let messages;
-    try {
-        messages = await getMessages();
-    } catch (error) {
-        // Fallback: direkt import
-        messages = (await import(`@/i18n/messages/${locale}.json`)).default;
-    }
+    const messages = await getMessages();
 
     return (
         <NextIntlClientProvider messages={messages}>

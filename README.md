@@ -327,44 +327,41 @@ vercel deploy
 
 **Live Demo:** [https://pazaryeri-frontend-case.vercel.app](https://pazaryeri-frontend-case.vercel.app)
 
-### GitHub Pages
+### Netlify (Alternatif Hosting)
 
-Proje GitHub Pages'e deploy edilmek için hazırlanmıştır. Otomatik deployment için GitHub Actions kullanılır.
+Netlify, Vercel'e benzer bir platformdur ve Next.js'i destekler.
 
 #### Adımlar:
 
-1. **GitHub Repository'ye Push Edin**
+1. **Netlify CLI ile deploy:**
    ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/mmuuhmmtt/pazaryeri-frontend-case.git
-   git push -u origin main
-   ```
-   
-   **Not:** Eğer repository zaten varsa, sadece push yapın:
-   ```bash
-   git add .
-   git commit -m "Add GitHub Pages deployment"
-   git push origin main
+   npm install -g netlify-cli
+   netlify login
+   netlify init
+   netlify deploy --prod
    ```
 
-2. **GitHub Pages'i Aktifleştirin**
-   - Repository'nize gidin: https://github.com/mmuuhmmtt/pazaryeri-frontend-case
-   - Settings → Pages
-   - Source: "GitHub Actions" seçin
-   - Save
+2. **GitHub ile otomatik deploy (Önerilen):**
+   - Netlify.com'a gidin ve hesap oluşturun
+   - "New site from Git" seçin
+   - GitHub repository'nizi bağlayın
+   - Build settings:
+     - Build command: `npm run build`
+     - Publish directory: `.next`
+   - **ÖNEMLİ:** Netlify UI'da "Plugins" bölümüne gidin ve `@netlify/plugin-nextjs` plugin'ini ekleyin
+   - "Deploy site" butonuna tıklayın
 
-3. **Otomatik Deploy**
-   - `main` branch'ine push yaptığınızda otomatik olarak deploy başlar
-   - Actions sekmesinden deploy durumunu takip edebilirsiniz
-   - Deploy tamamlandığında: **https://mmuuhmmtt.github.io/pazaryeri-frontend-case/** adresinde canlı olur
+3. **Netlify yapılandırması:**
+   - Projeye `netlify.toml` dosyası eklenmiştir
+   - Plugin otomatik olarak yapılandırılmıştır
 
-#### Notlar:
-- İlk deploy 5-10 dakika sürebilir
-- Sonraki deploy'lar daha hızlı olur
-- Custom domain kullanmak isterseniz, `next.config.mjs`'deki `basePath` ayarını kaldırın
+**Avantajlar:**
+- Ücretsiz tier mevcut
+- Otomatik HTTPS
+- Form handling desteği
+- Serverless functions
+
+**Canlı URL:** Otomatik olarak `your-project-name.netlify.app` formatında oluşturulur.
 
 ### Render (Alternatif Hosting)
 

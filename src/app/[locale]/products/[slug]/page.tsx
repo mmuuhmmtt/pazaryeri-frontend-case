@@ -10,8 +10,6 @@ import { formatPrice } from '@/lib/utils';
 import { Star } from 'lucide-react';
 
 export async function generateStaticParams() {
-    // Static export için locale desteği
-    // Locale zaten layout seviyesinde handle ediliyor
     return mockProducts.map((product) => ({
         slug: product.slug,
     }));
@@ -20,9 +18,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
                                            params,
                                        }: {
-    params: { locale: string; slug: string };
+    params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-    const { locale, slug } = params;
+    const { locale, slug } = await params;
 
     const product = mockProducts.find((p) => p.slug === slug);
 
@@ -56,10 +54,10 @@ export async function generateMetadata({
 export default async function ProductDetailPage({
                                                     params,
                                                 }: {
-    params: { locale: string; slug: string };
+    params: Promise<{ locale: string; slug: string }>;
 }) {
     const { locale, slug } = await params;
-    const t = await getTranslations();
+    const t = await getTranslations({ locale });
 
     const product = mockProducts.find((p) => p.slug === slug);
 

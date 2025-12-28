@@ -19,11 +19,6 @@ export default function middleware(request: NextRequest) {
         return NextResponse.redirect(url, 301);
     }
 
-    // Static export için middleware'i atla (GitHub Pages)
-    if (process.env.NEXT_PUBLIC_BASE_PATH || process.env.GITHUB_ACTIONS) {
-        return NextResponse.next();
-    }
-
     // Root path'i default locale'e yönlendir
     if (request.nextUrl.pathname === '/') {
         const url = request.nextUrl.clone();
