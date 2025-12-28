@@ -1,9 +1,4 @@
 {
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
-  "framework": "nextjs",
-  "regions": ["iad1"],
   "headers": [
     {
       "source": "/(.*)",
@@ -29,19 +24,6 @@
           "value": "camera=(), microphone=(), geolocation=()"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/tr"
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/(?!tr|en|_next|api|favicon\\.ico|.*\\..*)",
-      "destination": "/tr",
-      "permanent": false
     }
   ]
 }

@@ -24,6 +24,13 @@ export default function middleware(request: NextRequest) {
         return NextResponse.next();
     }
 
+    // Root path'i default locale'e yönlendir
+    if (request.nextUrl.pathname === '/') {
+        const url = request.nextUrl.clone();
+        url.pathname = `/${defaultLocale}`;
+        return NextResponse.redirect(url);
+    }
+
     try {
         return intlMiddleware(request);
     } catch (error) {
