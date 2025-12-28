@@ -70,22 +70,10 @@ export default async function HomePage({
                             muted
                             playsInline
                             className="h-full w-full object-cover"
-                            poster="/images/video-poster.jpg" //
                         >
                             <source
                                 src="/videos/hero-background.mp4"
                                 type="video/mp4"
-                            />
-
-                            <source
-                                src="/videos/hero-background.webm"
-                                type="video/webm"
-                            />
-
-                            <img
-                                src="/images/hero-fallback.jpg"
-                                alt="Background"
-                                className="h-full w-full object-cover"
                             />
                         </video>
 
