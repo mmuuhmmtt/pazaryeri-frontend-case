@@ -29,4 +29,6 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # Blobs için site ID gerekli (production'da otomatik ayarlanır)
+  NETLIFY_BLOBS_SITE_ID = ""
 
