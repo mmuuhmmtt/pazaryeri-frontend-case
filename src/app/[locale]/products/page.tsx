@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, use, useEffect } from 'react';
+import { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Header } from '@/components/features/header';
@@ -12,8 +12,11 @@ import { mockProducts } from '@/mock-data/products';
 import { filterProducts, sortProducts, searchProducts, paginateProducts } from '@/lib/utils';
 import type { FilterOptions, SortOption } from '@/types';
 
-export default function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {
-    const { locale } = use(params);
+interface ProductsPageClientProps {
+    locale: string;
+}
+
+function ProductsPageContent({ locale }: ProductsPageClientProps) {
     const searchParams = useSearchParams();
     const router = useRouter();
 
@@ -200,4 +203,22 @@ export default function ProductsPage({ params }: { params: Promise<{ locale: str
             </main>
         </>
     );
+}
+
+function ProductsPageClient({ locale }: ProductsPageClientProps) {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ProductsPageContent locale={locale} />
+        </Suspense>
+    );
+}
+
+// Server component wrapper to pass locale as prop
+export default async function ProductsPage({
+    params,
+}: {
+    params: Promise<{ locale: string }> | { locale: string };
+}) {
+    const { locale } = params instanceof Promise ? await params : params;
+    return <ProductsPageClient locale={locale} />;
 }

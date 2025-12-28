@@ -1,20 +1,32 @@
 'use client';
 
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
 import { Heart, ShoppingCart, Moon, Sun, ShoppingBag, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useFavoritesStore } from '@/store/useFavoritesStore';
 import { useCartStore } from '@/store/useCartStore';
 import { useUIStore } from '@/store/useUIStore';
 import { useState, useEffect } from 'react';
+// Static imports for messages (webpack can analyze these)
+import trMessages from '@/i18n/messages/tr.json';
+import enMessages from '@/i18n/messages/en.json';
 
 interface HeaderProps {
     locale: string;
 }
 
 export const Header = ({ locale }: HeaderProps) => {
-    const t = useTranslations();
+    // Runtime'da seç (static imports webpack tarafından analiz edilebilir)
+    const messages = locale === 'tr' ? trMessages : enMessages;
+    const navMessages = messages?.nav || {};
+    const t = (key: string) => {
+        const keys = key.split('.');
+        let value: any = navMessages;
+        for (const k of keys) {
+            value = value?.[k];
+        }
+        return value || key;
+    };
     const favoriteCount = useFavoritesStore((state) => state.favorites.length);
     const cartCount = useCartStore((state) => 
         state.items.reduce((total, item) => total + item.quantity, 0)

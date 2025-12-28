@@ -9,12 +9,26 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'tr';
 
-export default getRequestConfig(async ({ requestLocale }) => {
-    let locale = await requestLocale;
+// Static export için kontrol
+const isStaticExport = process.env.NEXT_PUBLIC_BASE_PATH || process.env.GITHUB_ACTIONS;
 
-    // Eğer locale tanımlı değilse veya desteklenmiyorsa
-    if (!locale || !routing.locales.includes(locale as any)) {
+export default getRequestConfig(async ({ requestLocale }) => {
+    let locale: string;
+    
+    if (isStaticExport) {
+        // Static export için requestLocale'ü hiç await etme (headers() çağrısı yapar)
+        // Default locale kullan, locale layout'tan gelecek
         locale = routing.defaultLocale;
+    } else {
+        // Normal export için requestLocale kullan
+        const requestedLocale = await requestLocale;
+        
+        // Eğer locale tanımlı değilse veya desteklenmiyorsa
+        if (!requestedLocale || !routing.locales.includes(requestedLocale as any)) {
+            locale = routing.defaultLocale;
+        } else {
+            locale = requestedLocale;
+        }
     }
 
     // Runtime'da seç (static imports webpack tarafından analiz edilebilir)

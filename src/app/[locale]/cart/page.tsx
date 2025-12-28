@@ -3,16 +3,17 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowLeft } from 'lucide-react';
 import { Header } from '@/components/features/header';
 import { Button } from '@/components/ui/button';
 import { useCartStore } from '@/store/useCartStore';
 import { formatPrice } from '@/lib/utils';
 
-export default function CartPage() {
-    const params = useParams();
-    const locale = params.locale as string;
+interface CartPageClientProps {
+    locale: string;
+}
+
+function CartPageClient({ locale }: CartPageClientProps) {
     const items = useCartStore((state) => state.items);
     const updateQuantity = useCartStore((state) => state.updateQuantity);
     const removeFromCart = useCartStore((state) => state.removeFromCart);
@@ -223,5 +224,15 @@ export default function CartPage() {
             </main>
         </>
     );
+}
+
+// Server component wrapper to pass locale as prop
+export default async function CartPage({
+    params,
+}: {
+    params: Promise<{ locale: string }> | { locale: string };
+}) {
+    const { locale } = params instanceof Promise ? await params : params;
+    return <CartPageClient locale={locale} />;
 }
 
