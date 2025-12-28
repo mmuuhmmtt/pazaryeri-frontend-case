@@ -1,10 +1,13 @@
+'use client';
+
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Home, Search } from 'lucide-react';
 
 export default function NotFound() {
     const t = useTranslations('notFound');
+    const locale = useLocale();
 
     return (
         <div className="flex min-h-screen flex-col items-center justify-center px-4">
@@ -17,12 +20,12 @@ export default function NotFound() {
                     {t('description')}
                 </p>
                 <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-                    <Link href="/">
+                    <Link href={`/${locale}`}>
                         <Button leftIcon={<Home className="h-5 w-5" />}>
                             {t('goHome')}
                         </Button>
                     </Link>
-                    <Link href="/products">
+                    <Link href={`/${locale}/products`}>
                         <Button variant="outline" leftIcon={<Search className="h-5 w-5" />}>
                             {t('browseProducts')}
                         </Button>

@@ -2,11 +2,23 @@
   command = "npm run build"
   publish = ".next"
 
+# Next.js için Netlify plugin'i
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Root path'i default locale'e yönlendir
 [[redirects]]
-  from = "/*"
+  from = "/"
+  to = "/tr"
+  status = 200
+
+# Locale olmayan path'leri default locale'e yönlendir
+[[redirects]]
+  from = "/(?!tr|en|_next|api|favicon.ico|.*\\..*)(.*)"
   to = "/tr/:splat"
   status = 200
 
+# Tüm path'ler için güvenlik header'ları
 [[headers]]
   for = "/*"
   [headers.values]

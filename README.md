@@ -366,6 +366,41 @@ Proje GitHub Pages'e deploy edilmek için hazırlanmıştır. Otomatik deploymen
 - Sonraki deploy'lar daha hızlı olur
 - Custom domain kullanmak isterseniz, `next.config.mjs`'deki `basePath` ayarını kaldırın
 
+### Render (Alternatif Hosting)
+
+Render, modern web uygulamaları için cloud platformdur.
+
+#### Adımlar:
+
+1. **Render Dashboard:**
+   - Render.com'a gidin ve hesap oluşturun
+   - "New +" → "Web Service" seçin
+   - GitHub repository'nizi bağlayın
+
+2. **Yapılandırma:**
+   - Name: `pazaryeri-frontend` (istediğiniz isim)
+   - Region: `Frankfurt` (Türkiye'ye yakın)
+   - Branch: `main`
+   - Root Directory: `./` (boş bırakın)
+   - Build Command: `npm install && npm run build`
+   - Start Command: `npm start`
+   - Environment: `Node`
+
+3. **Environment Variables:**
+   - `NODE_ENV=production`
+   - Diğer gerekli environment variable'ları ekleyin
+
+4. **Deploy:**
+   - "Create Web Service" butonuna tıklayın
+   - İlk build 5-10 dakika sürebilir
+
+**Avantajlar:**
+- Ücretsiz tier (sınırlı)
+- Otomatik HTTPS
+- Auto-deploy from Git
+- Custom domain desteği
+
+**Canlı URL:** `your-project-name.onrender.com` formatında oluşturulur.
 
 
 
