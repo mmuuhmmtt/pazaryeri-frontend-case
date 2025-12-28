@@ -10,6 +10,8 @@ import { formatPrice } from '@/lib/utils';
 import { Star } from 'lucide-react';
 
 export async function generateStaticParams() {
+    // Static export için locale desteği
+    // Locale zaten layout seviyesinde handle ediliyor
     return mockProducts.map((product) => ({
         slug: product.slug,
     }));

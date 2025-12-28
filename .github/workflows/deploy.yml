@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
+  workflow_dispatch: # Manuel olarak çalıştırmak için
 
 permissions:
   contents: read
@@ -36,6 +36,17 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
           GITHUB_ACTIONS: true
+          NODE_ENV: production
+
+      - name: Verify output directory
+        run: |
+          if [ ! -d "out" ]; then
+            echo "Error: 'out' directory not found after build"
+            ls -la
+            exit 1
+          fi
+          echo "✓ Output directory found"
+          ls -la out | head -20
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
