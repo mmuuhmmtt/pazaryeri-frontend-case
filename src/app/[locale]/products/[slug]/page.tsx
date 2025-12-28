@@ -1,13 +1,15 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
 import { Header } from '@/components/features/header';
 import { Badge } from '@/components/ui/badge';
 import { AddToCartButton } from '@/components/features/add-to-cart-button';
 import { mockProducts } from '@/mock-data/products';
 import { formatPrice } from '@/lib/utils';
 import { Star } from 'lucide-react';
+// Static imports for messages (webpack can analyze these)
+import trMessages from '@/i18n/messages/tr.json';
+import enMessages from '@/i18n/messages/en.json';
 
 // Static export için gerekli
 export const dynamic = 'force-static';
@@ -63,23 +65,19 @@ export default async function ProductDetailPage({
     // Static export için params Promise olmayabilir
     const { locale, slug } = params instanceof Promise ? await params : params;
     
-    // Static export için getTranslations() fallback ile
-    let t: any;
-    try {
-        t = await getTranslations({ locale });
-    } catch (error) {
-        // Fallback: direkt import (static export için)
-        const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
-        const productMessages = messages?.product || {};
-        t = (key: string) => {
-            const keys = key.split('.');
-            let value: any = productMessages;
-            for (const k of keys) {
-                value = value?.[k];
-            }
-            return value || key;
-        };
-    }
+    // Runtime'da seç (static imports webpack tarafından analiz edilebilir)
+    const messages = locale === 'tr' ? trMessages : enMessages;
+    const productMessages = messages?.product || {};
+    
+    // Translation helper function
+    const t = (key: string) => {
+        const keys = key.split('.');
+        let value: any = productMessages;
+        for (const k of keys) {
+            value = value?.[k];
+        }
+        return value || key;
+    };
 
     const product = mockProducts.find((p) => p.slug === slug);
 

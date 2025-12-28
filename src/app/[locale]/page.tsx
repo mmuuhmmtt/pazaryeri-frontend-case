@@ -1,13 +1,18 @@
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
-import { getTranslations } from 'next-intl/server';
+import nextDynamic from 'next/dynamic';
 import { Header } from '@/components/features/header';
 import { mockProducts } from '@/mock-data/products';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+// Static imports for messages (webpack can analyze these)
+import trMessages from '@/i18n/messages/tr.json';
+import enMessages from '@/i18n/messages/en.json';
+
+// Static export için gerekli
+export const dynamic = 'force-static';
 
 // Lazy load ProductGrid for better code splitting
-const ProductGrid = dynamic(
+const ProductGrid = nextDynamic(
     () => import('@/components/features/product-grid').then((mod) => ({ default: mod.ProductGrid })),
     {
         loading: () => (
@@ -21,9 +26,6 @@ const ProductGrid = dynamic(
     }
 );
 
-// Static export için gerekli
-export const dynamic = 'force-static';
-
 export async function generateMetadata({
                                            params,
                                        }: {
@@ -32,23 +34,16 @@ export async function generateMetadata({
     // Static export için params Promise olmayabilir
     const { locale } = params instanceof Promise ? await params : params;
     
-    // Static export için getTranslations() fallback ile
-    let t: any;
-    try {
-        t = await getTranslations({ locale, namespace: 'meta.home' });
-    } catch (error) {
-        // Fallback: direkt import (static export için)
-        const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
-        const metaMessages = messages?.meta?.home || {};
-        t = (key: string) => metaMessages[key] || key;
-    }
+    // Runtime'da seç (static imports webpack tarafından analiz edilebilir)
+    const messages = locale === 'tr' ? trMessages : enMessages;
+    const metaMessages = messages?.meta?.home || {};
 
     return {
-        title: t('title'),
-        description: t('description'),
+        title: metaMessages.title || 'Pazaryeri',
+        description: metaMessages.description || '',
         openGraph: {
-            title: t('ogTitle'),
-            description: t('ogDescription'),
+            title: metaMessages.ogTitle || metaMessages.title || 'Pazaryeri',
+            description: metaMessages.ogDescription || metaMessages.description || '',
             type: 'website',
         },
     };
@@ -62,23 +57,19 @@ export default async function HomePage({
     // Static export için params Promise olmayabilir
     const { locale } = params instanceof Promise ? await params : params;
     
-    // Static export için getTranslations() fallback ile
-    let t: any;
-    try {
-        t = await getTranslations({ locale, namespace: 'home' });
-    } catch (error) {
-        // Fallback: direkt import (static export için)
-        const messages = (await import(`@/i18n/messages/${locale}.json`)).default;
-        const homeMessages = messages?.home || {};
-        t = (key: string) => {
-            const keys = key.split('.');
-            let value: any = homeMessages;
-            for (const k of keys) {
-                value = value?.[k];
-            }
-            return value || key;
-        };
-    }
+    // Runtime'da seç (static imports webpack tarafından analiz edilebilir)
+    const messages = locale === 'tr' ? trMessages : enMessages;
+    const homeMessages = messages?.home || {};
+    
+    // Translation helper function
+    const t = (key: string) => {
+        const keys = key.split('.');
+        let value: any = homeMessages;
+        for (const k of keys) {
+            value = value?.[k];
+        }
+        return value || key;
+    };
 
     const featuredProducts = mockProducts.filter((p) => p.isFeatured);
 

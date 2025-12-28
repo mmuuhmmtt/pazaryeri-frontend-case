@@ -1,8 +1,10 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/config';
 import { PageTransition } from '@/components/ui/page-transition';
+// Static imports for messages (webpack can analyze these)
+import trMessages from '@/i18n/messages/tr.json';
+import enMessages from '@/i18n/messages/en.json';
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
@@ -22,14 +24,8 @@ export default async function LocaleLayout({
         notFound();
     }
 
-    // Static export için getMessages() fallback ile
-    let messages;
-    try {
-        messages = await getMessages();
-    } catch (error) {
-        // Fallback: direkt import (static export için)
-        messages = (await import(`@/i18n/messages/${locale}.json`)).default;
-    }
+    // Runtime'da seç (static imports webpack tarafından analiz edilebilir)
+    const messages = locale === 'tr' ? trMessages : enMessages;
 
     return (
         <NextIntlClientProvider messages={messages}>
