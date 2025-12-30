@@ -319,85 +319,33 @@ GET    /api/v1/brands/:slug          # Marka detay
 
 ##  Deployment
 
-### Vercel (Önerilen)
+### GitHub Pages
 
-```bash
-vercel deploy
-```
+Proje GitHub Pages'e otomatik olarak deploy edilir.
 
-**Live Demo:** [https://pazaryeri-frontend-case.vercel.app](https://pazaryeri-frontend-case.vercel.app)
+**Live Demo:** [https://mmuuhmmtt.github.io/pazaryeri-frontend-case/tr](https://mmuuhmmtt.github.io/pazaryeri-frontend-case/tr)
 
-### Netlify (Alternatif Hosting)
+#### Deployment Adımları:
 
-Netlify, Vercel'e benzer bir platformdur ve Next.js'i destekler.
+1. **GitHub Pages'i Etkinleştir:**
+   - Repository'nizde **Settings** → **Pages** bölümüne gidin
+   - **Source** olarak **GitHub Actions** seçin
+   - Ayarları kaydedin
 
-#### Adımlar:
+2. **Otomatik Deploy:**
+   - `main` branch'ine her push işleminde otomatik olarak deploy edilir
+   - `.github/workflows/deploy.yml` dosyası deployment'ı yönetir
 
-1. **Netlify CLI ile deploy:**
-   ```bash
-   npm install -g netlify-cli
-   netlify login
-   netlify init
-   netlify deploy --prod
-   ```
+3. **Manuel Deploy (Opsiyonel):**
+   - **Actions** sekmesinden "Deploy to GitHub Pages" workflow'unu seçin
+   - "Run workflow" butonuna tıklayın
 
-2. **GitHub ile otomatik deploy (Önerilen):**
-   - Netlify.com'a gidin ve hesap oluşturun
-   - "New site from Git" seçin
-   - GitHub repository'nizi bağlayın
-   - Build settings:
-     - Build command: `npm run build`
-     - Publish directory: `.next`
-   - **ÖNEMLİ:** Netlify UI'da "Plugins" bölümüne gidin ve `@netlify/plugin-nextjs` plugin'ini ekleyin
-   - "Deploy site" butonuna tıklayın
+#### Site URL'leri:
 
-3. **Netlify yapılandırması:**
-   - Projeye `netlify.toml` dosyası eklenmiştir
-   - Plugin otomatik olarak yapılandırılmıştır
+- **Türkçe:** [https://mmuuhmmtt.github.io/pazaryeri-frontend-case/tr](https://mmuuhmmtt.github.io/pazaryeri-frontend-case/tr)
+- **English:** [https://mmuuhmmtt.github.io/pazaryeri-frontend-case/en](https://mmuuhmmtt.github.io/pazaryeri-frontend-case/en)
 
-**Avantajlar:**
-- Ücretsiz tier mevcut
-- Otomatik HTTPS
-- Form handling desteği
-- Serverless functions
-
-**Canlı URL:** Otomatik olarak `your-project-name.netlify.app` formatında oluşturulur.
-
-### Render (Alternatif Hosting)
-
-Render, modern web uygulamaları için cloud platformdur.
-
-#### Adımlar:
-
-1. **Render Dashboard:**
-   - Render.com'a gidin ve hesap oluşturun
-   - "New +" → "Web Service" seçin
-   - GitHub repository'nizi bağlayın
-
-2. **Yapılandırma:**
-   - Name: `pazaryeri-frontend` (istediğiniz isim)
-   - Region: `Frankfurt` (Türkiye'ye yakın)
-   - Branch: `main`
-   - Root Directory: `./` (boş bırakın)
-   - Build Command: `npm install && npm run build`
-   - Start Command: `npm start`
-   - Environment: `Node`
-
-3. **Environment Variables:**
-   - `NODE_ENV=production`
-   - Diğer gerekli environment variable'ları ekleyin
-
-4. **Deploy:**
-   - "Create Web Service" butonuna tıklayın
-   - İlk build 5-10 dakika sürebilir
-
-**Avantajlar:**
-- Ücretsiz tier (sınırlı)
-- Otomatik HTTPS
-- Auto-deploy from Git
-- Custom domain desteği
-
-**Canlı URL:** `your-project-name.onrender.com` formatında oluşturulur.
+**Not:** İlk deployment 5-10 dakika sürebilir. Sonraki deploy'lar genellikle 2-5 dakika sürer.
 
 
 

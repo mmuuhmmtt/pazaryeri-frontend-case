@@ -27,6 +27,10 @@ export const Header = ({ locale }: HeaderProps) => {
         }
         return value || key;
     };
+    
+    // GitHub Pages için basePath desteği (build time'da replace edilir)
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    
     const favoriteCount = useFavoritesStore((state) => state.favorites.length);
     const cartCount = useCartStore((state) => 
         state.items.reduce((total, item) => total + item.quantity, 0)
@@ -59,7 +63,7 @@ export const Header = ({ locale }: HeaderProps) => {
                             className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 px-6 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-glow-purple"
                         >
                             <span className="relative z-10 flex items-center gap-2">
-                                {t('nav.home')}
+                                {t('home')}
                             </span>
                             <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent-pink opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                         </Link>
@@ -69,7 +73,7 @@ export const Header = ({ locale }: HeaderProps) => {
                             className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-accent-pink to-primary-600 px-6 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-glow-pink"
                         >
                             <span className="relative z-10 flex items-center gap-2">
-                                ✨ {t('nav.products')}
+                                ✨ {t('products')}
                             </span>
                             <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan to-primary-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                         </Link>
@@ -119,7 +123,7 @@ export const Header = ({ locale }: HeaderProps) => {
                             </Button>
                         </Link>
 
-                        <Link href={locale === 'tr' ? '/en' : '/tr'}>
+                        <Link href={`${basePath}/${locale === 'tr' ? 'en' : 'tr'}`}>
                             <Button 
                                 variant="outline" 
                                 size="sm"
@@ -140,17 +144,17 @@ export const Header = ({ locale }: HeaderProps) => {
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="block rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 px-4 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 active:scale-95"
                             >
-                                {t('nav.home')}
+                                {t('home')}
                             </Link>
                             <Link
                                 href={`/${locale}/products`}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="block rounded-xl bg-gradient-to-r from-accent-pink to-primary-600 px-4 py-3 text-sm font-bold text-white shadow-lg transition-all duration-300 active:scale-95"
                             >
-                                ✨ {t('nav.products')}
+                                ✨ {t('products')}
                             </Link>
                             <Link
-                                href={locale === 'tr' ? '/en' : '/tr'}
+                                href={`${basePath}/${locale === 'tr' ? 'en' : 'tr'}`}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="block rounded-xl border-2 border-primary-500 px-4 py-3 text-sm font-bold text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300 active:scale-95"
                             >

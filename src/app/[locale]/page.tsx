@@ -72,6 +72,10 @@ export default async function HomePage({
     };
 
     const featuredProducts = mockProducts.filter((p) => p.isFeatured);
+    
+    // GitHub Pages için basePath desteği
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    const videoSrc = `${basePath}/videos/hero-background.mp4`;
 
     return (
         <>
@@ -95,7 +99,7 @@ export default async function HomePage({
                             className="h-full w-full object-cover"
                         >
                             <source
-                                src="/videos/hero-background.mp4"
+                                src={videoSrc}
                                 type="video/mp4"
                             />
                         </video>
