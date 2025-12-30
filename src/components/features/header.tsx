@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Heart, ShoppingCart, Moon, Sun, ShoppingBag, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useFavoritesStore } from '@/store/useFavoritesStore';
 import { useCartStore } from '@/store/useCartStore';
 import { useUIStore } from '@/store/useUIStore';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 // Static imports for messages (webpack can analyze these)
 import trMessages from '@/i18n/messages/tr.json';
 import enMessages from '@/i18n/messages/en.json';
@@ -30,6 +31,25 @@ export const Header = ({ locale }: HeaderProps) => {
     
     // GitHub Pages için basePath desteği (build time'da replace edilir)
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    const pathname = usePathname();
+    
+    // Locale switching: mevcut path'i koruyarak sadece locale'i değiştir
+    const otherLocale = locale === 'tr' ? 'en' : 'tr';
+    const localeSwitchHref = useMemo(() => {
+        // Pathname basePath'i içermeyebilir, bu yüzden pathname'den basePath'i çıkar
+        let cleanPathname = pathname || '';
+        if (basePath && cleanPathname.startsWith(basePath)) {
+            cleanPathname = cleanPathname.substring(basePath.length);
+        }
+        
+        // Locale'i değiştir ve basePath'i ekle
+        if (cleanPathname) {
+            const newPath = cleanPathname.replace(`/${locale}`, `/${otherLocale}`);
+            return `${basePath}${newPath}`;
+        }
+        // Fallback: sadece locale ile
+        return `${basePath}/${otherLocale}`;
+    }, [pathname, locale, otherLocale, basePath]);
     
     const favoriteCount = useFavoritesStore((state) => state.favorites.length);
     const cartCount = useCartStore((state) => 
@@ -123,7 +143,7 @@ export const Header = ({ locale }: HeaderProps) => {
                             </Button>
                         </Link>
 
-                        <Link href={`${basePath}/${locale === 'tr' ? 'en' : 'tr'}`}>
+                        <Link href={localeSwitchHref}>
                             <Button 
                                 variant="outline" 
                                 size="sm"
@@ -154,7 +174,7 @@ export const Header = ({ locale }: HeaderProps) => {
                                 ✨ {t('products')}
                             </Link>
                             <Link
-                                href={`${basePath}/${locale === 'tr' ? 'en' : 'tr'}`}
+                                href={localeSwitchHref}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="block rounded-xl border-2 border-primary-500 px-4 py-3 text-sm font-bold text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300 active:scale-95"
                             >
